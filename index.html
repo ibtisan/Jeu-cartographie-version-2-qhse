@@ -362,52 +362,52 @@ body {
 <!--   ZONES 1–46 : Correspondance exacte -->
 <!-- ========================== -->
 
-<div class="zone zone1" data-id="carte1"></div>
-<div class="zone zone2" data-id="carte2"></div>
-<div class="zone zone3" data-id="carte3"></div>
-<div class="zone zone4" data-id="carte4"></div>
-<div class="zone zone5" data-id="carte5"></div>
-<div class="zone zone6" data-id="carte6"></div>
-<div class="zone zone7" data-id="carte7"></div>
-<div class="zone zone8" data-id="carte8"></div>
-<div class="zone zone9" data-id="carte9"></div>
-<div class="zone zone10" data-id="carte10"></div>
-<div class="zone zone11" data-id="carte11"></div>
-<div class="zone zone12" data-id="carte12"></div>
-<div class="zone zone13" data-id="carte13"></div>
-<div class="zone zone14" data-id="carte14"></div>
-<div class="zone zone15" data-id="carte15"></div>
-<div class="zone zone16" data-id="carte16"></div>
-<div class="zone zone17" data-id="carte17"></div>
-<div class="zone zone18" data-id="carte18"></div>
-<div class="zone zone19" data-id="carte19"></div>
-<div class="zone zone20" data-id="carte20"></div>
-<div class="zone zone21" data-id="carte21"></div>
-<div class="zone zone22" data-id="carte22"></div>
-<div class="zone zone23" data-id="carte23"></div>
-<div class="zone zone24" data-id="carte24"></div>
-<div class="zone zone25" data-id="carte25"></div>
-<div class="zone zone26" data-id="carte26"></div>
-<div class="zone zone27" data-id="carte27"></div>
-<div class="zone zone28" data-id="carte28"></div>
-<div class="zone zone29" data-id="carte29"></div>
-<div class="zone zone30" data-id="carte30"></div>
-<div class="zone zone31" data-id="carte31"></div>
-<div class="zone zone32" data-id="carte32"></div>
-<div class="zone zone33" data-id="carte33"></div>
-<div class="zone zone34" data-id="carte34"></div>
-<div class="zone zone35" data-id="carte35"></div>
-<div class="zone zone36" data-id="carte36"></div>
-<div class="zone zone37" data-id="carte37"></div>
-<div class="zone zone38" data-id="carte38"></div>
-<div class="zone zone39" data-id="carte39"></div>
-<div class="zone zone40" data-id="carte40"></div>
-<div class="zone zone41" data-id="carte41"></div>
-<div class="zone zone42" data-id="carte42"></div>
-<div class="zone zone43" data-id="carte43"></div>
-<div class="zone zone44" data-id="carte44"></div>
-<div class="zone zone45" data-id="carte45"></div>
-<div class="zone zone46" data-id="carte46"></div>
+<div class="zone zone1" data-accept="carte1"></div>
+<div class="zone zone2" data-accept="carte2,carte24"></div>
+<div class="zone zone3" data-accept="carte3,carte15"></div>
+<div class="zone zone4" data-accept="carte4,carte12,carte21,carte25"></div>
+<div class="zone zone5" data-accept="carte5,carte17"></div>
+<div class="zone zone6" data-accept="carte6,carte10"></div>
+<div class="zone zone7" data-accept="carte7,carte19"></div>
+<div class="zone zone8" data-accept="carte8,carte14"></div>
+<div class="zone zone9" data-accept="carte9,carte16"></div>
+<div class="zone zone10" data-accept="carte10,carte6"></div>
+<div class="zone zone11" data-accept="carte11,carte18,carte20"></div>
+<div class="zone zone12" data-accept="carte12,carte4,carte21,carte25"></div>
+<div class="zone zone13" data-accept="carte13,carte22"></div>
+<div class="zone zone14" data-accept="carte14,carte8"></div>
+<div class="zone zone15" data-accept="carte15,carte3"></div>
+<div class="zone zone16" data-accept="carte16,carte9"></div>
+<div class="zone zone17" data-accept="carte17,carte5"></div>
+<div class="zone zone18" data-accept="carte18,carte11,carte20"></div>
+<div class="zone zone19" data-accept="carte19,carte7"></div>
+<div class="zone zone20" data-accept="carte20,carte11,carte18"></div>
+<div class="zone zone21" data-accept="carte21,carte12,carte4,carte25"></div>
+<div class="zone zone22" data-accept="carte22,carte13"></div>
+<div class="zone zone23" data-accept="carte23"></div>
+<div class="zone zone24" data-accept="carte24,carte2"></div>
+<div class="zone zone25" data-accept="carte25,carte12,carte21,carte4"></div>
+<div class="zone zone26" data-accept="carte26"></div>
+<div class="zone zone27" data-accept="carte27"></div>
+<div class="zone zone28" data-accept="carte28"></div>
+<div class="zone zone29" data-accept="carte29"></div>
+<div class="zone zone30" data-accept="carte30"></div>
+<div class="zone zone31" data-accept="carte31"></div>
+<div class="zone zone32" data-accept="carte32"></div>
+<div class="zone zone33" data-accept="carte33"></div>
+<div class="zone zone34" data-accept="carte34"></div>
+<div class="zone zone35" data-accept="carte35"></div>
+<div class="zone zone36" data-accept="carte36"></div>
+<div class="zone zone37" data-accept="carte37"></div>
+<div class="zone zone38" data-accept="carte38"></div>
+<div class="zone zone39" data-accept="carte39"></div>
+<div class="zone zone40" data-accept="carte40"></div>
+<div class="zone zone41" data-accept="carte41"></div>
+<div class="zone zone42" data-accept="carte42"></div>
+<div class="zone zone43" data-accept="carte43"></div>
+<div class="zone zone44" data-accept="carte44"></div>
+<div class="zone zone45" data-accept="carte45"></div>
+<div class="zone zone46" data-accept="carte46"></div>
 
 
 
@@ -462,7 +462,9 @@ function drop(e) {
   e.preventDefault();
   const zoneId = this.dataset.id;
 
-  if (draggedCarte.id === zoneId) {
+  const accepted = this.dataset.accept.split(",");
+if (accepted.includes(draggedCarte.id)) {
+
     this.appendChild(draggedCarte);
     draggedCarte.style.position = "absolute";
     draggedCarte.style.top = "0px";
@@ -600,7 +602,7 @@ SMQ de BP PLASTICS
     <p>
       🔹 Déplacez les cartes des 25 indicateurs <strong>(en bleu foncé)</strong> vers les zones vertes correspondantes sur la carte.<br><br>
             🔹 Déplacez les cartes des 21 éléments d’entrée et de sortie <strong>(en bleu clair)</strong> dans les zones bleues correspondante sur la carte.<br><br>
-      🔹 Si la carte correspond au bon emplacement, elle se fixe et vous gagnez des points.<br><br>
+      🔹 Si la carte correspond à la bonne activité, elle se fixe et vous gagnez des points.<br><br>
       🔹 Si ce n’est pas le bon emplacement, la carte revient à sa position initiale.<br><br>
       🔹  Le score augmente à chaque bonne réponse jusqu’à 46/46.<br><br>
 
